@@ -1,0 +1,27 @@
+section{
+    width: 80%;
+    margin: 20px;
+    height: 90vh;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+section table{
+    border: none;
+}
+
+section table tr{
+    border-top: 1px solid #333;
+    background: #f3f4f4;
+}
+
+section table tr td{
+    padding: 30px;
+    font-family: century gothic;
+}
+
+section table tr td.dot{
+    font-size: 20px;
+    font-weight: 600;
+}

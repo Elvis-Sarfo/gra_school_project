@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="logo1.png" type="image/x-icon">
+    <title>GRA | Home</title>
+</head>
+<body>
+    <div class="main">
+
+        <!-- Top Navigation -->
+        <nav>
+            <div class="burger" onclick="openNav()">
+                <div class="ham"></div>
+                <div class="ham"></div>
+                <div class="ham"></div>
+            </div>
+            <div class="logo">
+
+                <!--GRA Logo -->
+              <img src="img/logo1.png" alt="Logo is here">
+            </div>
+             
+                 <!-- Responsiveness -->
+            <div class="menu" id="menu">
+                <div class="closebtn" onclick="closeNav()">
+                    <a href="#">&times;</a>
+                </div>
+                <ul>
+                    <li><a href="#">INTEGRITY</a></li>
+                    <li><a href="#">FAIRNESS</a></li>
+                    <li><a href="#">SERVICE</a></li>
+                    <li><a href="profile.html"><i class="fas fa-user"></i></a></li>
+                </ul>
+            </div>
+            <div class="abt">
+            </div>
+        </nav>
+                <!-- Main content -->
+            <div class="content">
+                <!-- Top image -->
+                <section class="sec_1">
+                <img src="img/section.jpg" alt="Section Background"> 
+                    <h1 class="overflow">WELCOME TO GHANA REVENUE AUTHORITY'S <span class="down"> DIGITIZED MEMO PLATFORM </span></h1>
+                </section>
+
+                <section class="login">
+                    <!-- Login header -->
+                  <h1>Login</h1>
+                       <!-- Input container -->
+                    <span>
+                        <label for="input">E-mail</label>
+                        <input type="email" name="email"  placeholder="Enter Email">
+                    </span>
+
+                    <!-- Input container -->
+                    <span>
+                        <label for="input">Password</label>
+                        <input type="password" name="password" placeholder="Enter Password">
+                    </span>
+                            <!-- Login button -->
+                    <a href="home.html">
+                        <button type="submit">LOGIN</button>
+                    </a>
+                </section>
+            </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

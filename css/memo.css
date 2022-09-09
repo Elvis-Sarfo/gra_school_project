@@ -1,0 +1,40 @@
+section{
+    width: 90%;
+    margin: 50px auto;
+    background: #d6e8f8;
+    border: none;
+    height: 84vh;
+}
+
+.edit-memo{
+    width: 300px;
+    height: 100%;
+    background: #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-memo li{
+    max-width: 100px;
+    margin: 30px;
+    border: 2px solid #333;
+    padding: 5px 10px;
+}
+
+.edit-memo li a{
+    border:none;
+    text-transform: uppercase;
+    font-size: 20px;
+    background: transparent;
+    text-align:center;
+    color: #333;
+}
+.edit-memo li:hover,
+.edit-memo li:focus,
+.edit-memo li:active{
+    background: #a0c2f0;
+    color: #0d4981;
+    border: none;
+}
