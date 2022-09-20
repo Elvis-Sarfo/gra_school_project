@@ -116,30 +116,74 @@
             <div class="textarea">
                 <span>
                     <label for="path">TO:</label>
-                    <input type="text" id="path" placeholder="Destination" required>
+                    <input id="to" name="to" type="text" id="path" placeholder="Destination" required>
                 </span>
                 <span>
                     <label for="path">FROM:</label>
-                    <input type="text" id="path" placeholder="" required>
+                    <input id="from" name="from" type="text" id="path" placeholder="" required>
                 </span>
                 <span>
                     <label for="path">THROUGH:</label>
-                    <input type="text" id="path" placeholder="" required>
+                    <input id="through" name="through"  type="text" id="path" placeholder="" required>
                 </span>
                 <span>
-                    <label for="path">BCC:</label>
-                    <input type="text" id="path" placeholder="">
+                    <label for="path">CC:</label>
+                    <input id="cc" name="cc" type="text" id="path" placeholder="">
                 </span>
                 <span>
                     <label for="path">DATE:</label>
-                    <input type="date" id="path" placeholder="dd/mm/yyyy"/>
+                    <input id="date" name="date" type="date" id="path" placeholder="dd/mm/yyyy"/>
                 </span>
                 <div class="input-text">
                     <textarea name="" id="" cols="100" rows="2" placeholder="Subject"></textarea>
                     <textarea name="" id="" cols="100" rows="10" placeholder="Body"></textarea>
                     <textarea name="" id="" cols="100" rows="4" placeholder="Minute/Comments"></textarea>
                 </div>
-            </div>  
+            </div> 
+            <script type="module">
+                // Import the functions you need from the SDKs you need
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+                import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+                import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+                // TODO: Add SDKs for Firebase products that you want to use
+                // https://firebase.google.com/docs/web/setup#available-libraries
+              
+                // Your web app's Firebase configuration
+                // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+                const firebaseConfig = {
+                  apiKey: "AIzaSyAPw3zIsWwYmVCH6OpNPeJg_e9fnmk9kW4",
+                  authDomain: "gra-school.firebaseapp.com",
+                  projectId: "gra-school",
+                  storageBucket: "gra-school.appspot.com",
+                  messagingSenderId: "693272566435",
+                  appId: "1:693272566435:web:6472e527473a570effbd16",
+                  measurementId: "G-TQ8Y4PYQSX"
+                };
+              
+                // Initialize Firebase
+                const app = initializeApp(firebaseConfig);
+                const analytics = getAnalytics(app);
+                const db = getFirestore(app);
+              
+                  const to = document.getElementById("to");
+                  const from = document.getElementById("from");
+                  const through = document.getElementById("through");
+                  const cc = document.getElementById("cc");
+                  const date = document.getElementById("date");
+              
+                  try {
+                    const docRef = await addDoc(collection(db, "memo"), {
+                      to: to,
+                      from:from,
+                      through: through,
+                      cc: cc,
+                      date: date,
+                    });
+                    console.log("Document written with ID: ", docRef.id);
+                  } catch (e) {
+                    console.error("Error adding document: ", e);
+                  }
+              </script> 
           
             </section>
            </main>
