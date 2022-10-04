@@ -1,40 +1,112 @@
-section{
-    width: 90%;
-    margin: 50px auto;
-    background: #d6e8f8;
-    border: none;
-    height: 84vh;
+section {
+  width: 90%;
+  margin: 50px auto 5px;
+  background: #d6e8f8;
+  border: none;
+  height: 82vh;
+  display: flex;
 }
 
-.edit-memo{
-    width: 300px;
-    height: 100%;
-    background: #ccc;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.edit-memo {
+  width: 300px;
+  height: 100%;
+  background: #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 3;
 }
 
-.edit-memo li{
-    max-width: 100px;
-    margin: 30px;
-    border: 2px solid #333;
-    padding: 5px 10px;
+.memo-content {
+  padding: 50px;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  flex: 9;
 }
 
-.edit-memo li a{
-    border:none;
-    text-transform: uppercase;
-    font-size: 20px;
-    background: transparent;
-    text-align:center;
-    color: #333;
+.memo-content .memo-footer .signature {
+  height: 80px;
+  width: 150px;
+  border-bottom: 1px solid;
+  padding-bottom: 10px;
+  padding-top: 15px;
+}
+
+.memo-content .letter-head img {
+  margin: auto;
+  width: 250px;
+}
+
+.memo-content .letter-head {
+  text-align: center;
+}
+
+.memo-content .memo-meta td {
+  padding: 5px;
+}
+
+.memo-content .memo-meta th {
+  text-align: right;
+}
+
+.edit-memo li {
+  max-width: 100px;
+  margin: 30px;
+  border: 2px solid #333;
+  padding: 5px 10px;
+}
+
+.edit-memo li a {
+  border: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  background: transparent;
+  text-align: center;
+  color: #333;
 }
 .edit-memo li:hover,
 .edit-memo li:focus,
-.edit-memo li:active{
-    background: #a0c2f0;
-    color: #0d4981;
-    border: none;
+.edit-memo li:active {
+  background: #a0c2f0;
+  color: #0d4981;
+  border: none;
+}
+
+@media print {
+  .memo-content {
+    padding: 50px;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    flex: 9;
+  }
+
+  .memo-content .memo-footer .signature {
+    height: 80px;
+    width: 150px;
+    border-bottom: 1px solid;
+    padding-bottom: 10px;
+    padding-top: 15px;
+  }
+
+  .memo-content .letter-head img {
+    margin: auto;
+    width: 250px;
+  }
+
+  .memo-content .letter-head {
+    text-align: center;
+  }
+
+  .memo-content .memo-meta td {
+    padding: 5px;
+  }
+
+  .memo-content .memo-meta th {
+    text-align: right;
+  }
 }

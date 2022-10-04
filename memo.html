@@ -1,100 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/inbox.css">
-    <link rel="stylesheet" href="css/compose.css">
-    <link rel="stylesheet" href="css/memo.css">
-    <!--Icons-->
-    <link rel="stylesheet" href="fa/css/brands.css"/>
-    <link rel="stylesheet" href="fa/css/solid.css"/>
-    <link rel="stylesheet" href="fa/css/fontawesome.css"/>
-    <link rel="stylesheet" href="fa/css/regular.css"/>
-    <title>Edit Memo</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- <link rel="stylesheet" href="css/home.css"> -->
+  <!-- <link rel="stylesheet" href="css/inbox.css">
+    <link rel="stylesheet" href="css/compose.css"> -->
+  <link rel="stylesheet" href="css/memo.css">
+  <!--Icons-->
+  <link rel="stylesheet" href="fa/css/brands.css" />
+  <link rel="stylesheet" href="fa/css/solid.css" />
+  <link rel="stylesheet" href="fa/css/fontawesome.css" />
+  <link rel="stylesheet" href="fa/css/regular.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js">
+  </script>
+  <title>Edit Memo</title>
 </head>
+
 <body>
-    <div class="main">
-        <!-- Top Navigation-->
-        <nav>
-          <div class="logo">
-              <img src="img/logo1.png" alt="Logo is here">
-          </div>
-          <div class="links">
-              <ul>
-                  <li><a href="home.html">Home</a></li>
-                  <li><a href="#">About</a></li>
-              </ul>
-          </div>
-          <div class="menu">
-              <ul>
-                  <li><a href="#">INTEGRITY</a></li>
-                  <li><a href="#">FAIRNESS</a></li>
-                  <li><a href="#">SERVICE</a></li>
-                  <li><a href="profile.html"><i class="fas fa-user"></i></a></li>
-              </ul>
-          </div>
-          <div class="abt">
-            dfghjkl;cxcj
-          </div>
-      </nav>
-    <section>
-        <!--a href="compose.html" class="arrow"-->
-            <!--img src="RemixIcon-2.5.0/icons/System/arrow-go-back-line.svg" alt=""-->
-        </a>
-        <ul class="edit-memo">
-        <a href="compose.html" class="arrow">
-            <img src="RemixIcon-2.5.0/icons/System/arrow-go-back-line.svg" alt="">
-
-            <li><a href="">Edit</a></li>
-            <li><a href="">Print</a></li>
-            <li><a href="">Send</a></li>
+  <div class="main">
+    <!-- Top Navigation-->
+    <nav>
+      <div class="logo">
+        <img src="img/logo1.png" alt="Logo is here">
+      </div>
+      <div class="links">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="#">About</a></li>
         </ul>
+      </div>
+      <div class="menu">
+        <ul>
+          <li><a href="#">INTEGRITY</a></li>
+          <li><a href="#">FAIRNESS</a></li>
+          <li><a href="#">SERVICE</a></li>
+          <li><a href="profile.html"><i class="fas fa-user"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+    <section>
+      <!--a href="compose.html" class="arrow"-->
+      <!--img src="RemixIcon-2.5.0/icons/System/arrow-go-back-line.svg" alt=""-->
+      <!-- </a> -->
+      <ul class="edit-memo">
+        <li>
+          <a href="compose.html" class="arrow">
+            <img src="RemixIcon-2.5.0/icons/System/arrow-go-back-line.svg" alt="back">
+          </a>
+        </li>
+        <li><a href="">Edit</a></li>
+        <li><a id="btnPrint" href="">Print</a></li>
+        <li><a href="">Send</a></li>
+      </ul>
 
-        <div>
-            <img src="img/logo1.png" alt="Logo is here">
-            <h1>SUPPORT SERVICE DIVISION</h1>
-            <h2>(INFORMATION TECHNOLOGY DEPARTMENT) </h2>
-            <h3>MEMORANDUM</h3>
+      <div id="memo-content" class="memo-content">
 
-            
-              <table style="width:100%">
-                <tr>
-                  <th>TO:</th>
-                  <td>Bill Gates</td>
-                </tr>
-                <tr>
-                  <th>FROM:</th>
-                  <td>555 77 854</td>
-                </tr>
-                <tr>
-                  <th>THROUGH:</th>
-                  <td>555 77 855</td>
-                </tr>
-                <tr>
-                    <th>CC:</th>
-                    <td>555 77 855</td>
-                  </tr>
-                  <tr>
-                    <th>DATE:</th>
-                    <td>555 77 855</td>
-                  </tr>
-                  <tr>
-                    <th>SUBJECT:</th>
-                    <td>555 77 855</td>
-                  </tr>
-              </table>
-
-              <hr>
-              <p>the body</p>
-              <hr>
-              <p>Signature</p>
-
-            
+        <div class="letter-head">
+          <img src="img/logo1.png" alt="Logo is here">
+          <h1>SUPPORT SERVICE DIVISION</h1>
+          <h2>(INFORMATION TECHNOLOGY DEPARTMENT) </h2>
+          <h3>MEMORANDUM</h3>
         </div>
+        <table class="memo-meta">
+          <tr>
+            <th>TO:</th>
+            <td>Bill Gates</td>
+          </tr>
+          <tr>
+            <th>FROM:</th>
+            <td>555 77 854</td>
+          </tr>
+          <tr>
+            <th>THROUGH:</th>
+            <td>555 77 855</td>
+          </tr>
+          <tr>
+            <th>CC:</th>
+            <td>555 77 855</td>
+          </tr>
+          <tr>
+            <th>DATE:</th>
+            <td>555 77 855</td>
+          </tr>
+          <tr>
+            <th>SUBJECT:</th>
+            <td>555 77 855</td>
+          </tr>
+        </table>
+
+        <hr>
+        <p>the body</p>
+        <div class="memo-footer">
+          <!-- <hr> -->
+          <img class="signature" src="img/logo1.png" alt="Signature" width="20px">
+          <p>Signature</p>
+        </div>
+
+      </div>
     </section>
+
+    <script>
+      var button = document.getElementById("btnPrint");
+      var makepdf = document.getElementById("memo-content");
+
+      button.addEventListener("click", function (e) {
+        e.preventDefault();
+        html2pdf().from(makepdf).save();
+        return true;
+
+      });
+    </script>
+
 </body>
+
 </html>
