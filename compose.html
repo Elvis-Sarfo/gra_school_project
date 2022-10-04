@@ -163,10 +163,27 @@
           var makepdf = document.getElementById("memo-content");
 
           frmMemo.addEventListener("submit", function (e) {
+            // Prevent the form from sending a post request by default
             e.preventDefault();
-            console.log('The for is ready');
-            // TODO: Save the memo data in a loca storage
-            // TODO: navigate to the memo preview page
+
+            // Get the values from the fields
+            const to = document.getElementById("to").value;
+            const from = document.getElementById("from").value;
+            const through = document.getElementById("through").value;
+            const cc = document.getElementById("cc").value;
+            const date = document.getElementById("date").value;
+            const subject = document.getElementById("subject").value;
+            const body = document.getElementById("body").value;
+            const minute = document.getElementById("minute").value;
+
+            // Create an object to hold the data
+            const newMemo = {to, from, through, cc, date, subject, body, minute};
+
+            // TODO: Stringify the object and save the memo data in a local storage
+            localStorage.setItem('composedMemo', JSON.stringify(newMemo));
+
+            // Navigate to the memo preview page
+            window.location = '/memo.html';
             return true;
           });
 
@@ -195,12 +212,6 @@
           const app = initializeApp(firebaseConfig);
           const analytics = getAnalytics(app);
           const db = getFirestore(app);
-
-          const to = document.getElementById("to");
-          const from = document.getElementById("from");
-          const through = document.getElementById("through");
-          const cc = document.getElementById("cc");
-          const date = document.getElementById("date");
 
           // try {
           //   const docRef = await addDoc(collection(db, "memo"), {
