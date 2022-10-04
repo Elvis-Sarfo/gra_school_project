@@ -54,7 +54,7 @@
         </li>
         <li><a href="">Edit</a></li>
         <li><a id="btnPrint" href="">Print</a></li>
-        <li><a href="">Send</a></li>
+        <li><a id="btnSend" href="">Send</a></li>
       </ul>
 
       <div id="memo-content" class="memo-content">
@@ -68,32 +68,33 @@
         <table class="memo-meta">
           <tr>
             <th>TO:</th>
-            <td>Bill Gates</td>
+            <td id="to"></td>
           </tr>
           <tr>
             <th>FROM:</th>
-            <td>555 77 854</td>
+            <td id="from"></td>
           </tr>
           <tr>
             <th>THROUGH:</th>
-            <td>555 77 855</td>
+            <td id="through"></td>
           </tr>
           <tr>
             <th>CC:</th>
-            <td>555 77 855</td>
+            <td id="cc"></td>
           </tr>
           <tr>
             <th>DATE:</th>
-            <td>555 77 855</td>
+            <td id="date"></td>
           </tr>
           <tr>
             <th>SUBJECT:</th>
-            <td>555 77 855</td>
+            <td id="subject"></td>
           </tr>
         </table>
 
         <hr>
-        <p>the body</p>
+        <p id="body"></p>
+        <p id="minute"></p>
         <div class="memo-footer">
           <!-- <hr> -->
           <img class="signature" src="img/logo1.png" alt="Signature" width="20px">
@@ -104,10 +105,24 @@
     </section>
 
     <script>
-      var button = document.getElementById("btnPrint");
-      var makepdf = document.getElementById("memo-content");
+      // Get the composed memo from he local storage
+      const composedMemo = JSON.parse(localStorage.getItem('composedMemo'));
 
-      button.addEventListener("click", function (e) {
+      // Set the text contents of the fields
+      document.getElementById("to").textContent = composedMemo.to;
+      document.getElementById("from").textContent = composedMemo.from;
+      document.getElementById("through").textContent = composedMemo.cc;
+      document.getElementById("cc").textContent = composedMemo.date;
+      document.getElementById("date").textContent = composedMemo.date;
+      document.getElementById("subject").textContent = composedMemo.subject;
+      document.getElementById("body").textContent = composedMemo.body;
+      document.getElementById("minute").textContent = composedMemo.minute;
+
+      const btnPrint = document.getElementById("btnPrint");
+      const makepdf = document.getElementById("memo-content");
+
+
+      btnPrint.addEventListener("click", function (e) {
         e.preventDefault();
         html2pdf().from(makepdf).save();
         return true;
@@ -139,20 +154,28 @@
       const analytics = getAnalytics(app);
       const db = getFirestore(app);
 
-      try {
-        // Get the composed memo from he local storage
-        const composedMemo = localStorage.getItem('composedMemo');
+      const btnSend = document.getElementById("btnSend");
 
-        // Save the new memo in the cloud database
-        const docRef = await addDoc(collection(db, "memo"), JSON.parse(composedMemo));
+      btnSend.addEventListener("click", async function (e) {
+        e.preventDefault();
+        try {
+          // Get the composed memo from he local storage
+          const composedMemo = localStorage.getItem('composedMemo');
 
-        // TODO: Remove the composedMemo from the local storage if the data is saved successfully
-        // TODO: Prompt the user that the message is sent
-        console.log("Document written with ID: ", docRef.id);
-      } catch (e) {
-        // TODO: Prompt the user that the message is not sent
-        console.error("Error adding document: ", e);
-      }
+          // Save the new memo in the cloud database
+          const docRef = await addDoc(collection(db, "memo"), JSON.parse(composedMemo));
+
+          // TODO: Remove the composedMemo from the local storage if the data is saved successfully
+          // TODO: Prompt the user that the message is sent
+          console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+          // TODO: Prompt the user that the message is not sent
+          console.error("Error adding document: ", e);
+        }
+        return true;
+      });
+
+
     </script>
 
 </body>
