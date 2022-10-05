@@ -349,6 +349,10 @@ img {
   border-radius: 10px;
 }
 
+.body .section-title{
+  padding: 20px;
+}
+
 .main main aside li.closebtn {
   display: none;
 }
