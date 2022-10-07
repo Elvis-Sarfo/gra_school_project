@@ -9,6 +9,7 @@ section{
 
 section table{
     border: none;
+    width: 100%;
 }
 
 section table tr{
@@ -25,3 +26,133 @@ section table tr td.dot{
     font-size: 20px;
     font-weight: 600;
 }
+
+
+/* email list */
+.emailList {
+    flex: 1;
+    overflow: scroll;
+  }
+  
+  .emailList__settings {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid whitesmoke;
+    background-color: white;
+    z-index: 999;
+    padding: 8px;
+  }
+  
+  .emailList__settingsLeft {
+    display: flex;
+    align-items: center;
+  }
+  
+  .emailList__settings .material-icons {
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  .section {
+    display: flex;
+    align-items: center;
+    border-bottom-width: 2px;
+    padding: 15px;
+    min-width: 200px;
+    cursor: pointer;
+    color: grey;
+    border-width: 0;
+  }
+  
+  .emailList__sections {
+    position: sticky;
+    top: 0;
+    display: flex;
+    background-color: white;
+    border-bottom: 1px solid whitesmoke;
+    z-index: 999;
+  }
+  
+  .section__selected {
+    background-color: whitesmoke;
+    border-width: 3px;
+    color: red;
+    border-bottom: 3px solid red;
+  }
+  
+  .section__selected .material-icons {
+    color: red;
+  }
+  
+  .section:hover {
+    background-color: whitesmoke;
+    border-width: 3px;
+  }
+  
+  .section h4 {
+    font-size: 14px;
+    margin-left: 15px;
+  }
+  
+  .emailRow__options {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+  
+  .emailRow__options .material-icons,
+  input {
+    margin: 5px;
+  }
+  
+  .emailRow {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid whitesmoke;
+    cursor: pointer;
+    z-index: 999;
+  }
+  
+  .emailRow:hover {
+    border-top: 1px solid whitesmoke;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+  }
+  
+  .emailRow__message {
+    display: flex;
+    flex: 0.8;
+    align-items: center;
+    font-size: 15px;
+  }
+
+  .emailRow__message h4 {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  .emailRow__title {
+    font-size: 13px;
+    flex: 0.2;
+    padding-left: 20px;
+    font-size: 16px;
+  }
+  
+  .emailRow__time {
+    padding-right: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: grey;
+  }
+  
+  .emailRow__description {
+    font-weight: 400;
+    color: gray;
+  }
+  
