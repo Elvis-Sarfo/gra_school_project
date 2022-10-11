@@ -301,8 +301,23 @@ img {
   flex-direction: column;
 }
 
+.main main aside ul li.active{
+  background: #00a2d7;
+  border-radius: 0px 50px 50px 0px;
+}
+
+.main main aside ul li:hover {
+  background: #00a2d7;
+  border-radius: 5px;
+}
+
+.main main aside ul li a:hover {
+  color: #333!important;
+}
+
 .main main aside ul li {
-  margin: 20px 20px 20px 10px;
+  margin: 15px 15px 15px 0px;
+  padding: 5px 5px 5px 15px;
 }
 
 .main main aside ul li a img {

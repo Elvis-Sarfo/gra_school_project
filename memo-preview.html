@@ -6,9 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
-  <!-- <link rel="stylesheet" href="css/home.css"> -->
-  <!-- <link rel="stylesheet" href="css/inbox.css">
-    <link rel="stylesheet" href="css/compose.css"> -->
   <link rel="stylesheet" href="css/memo.css">
   <!--Icons-->
   <link rel="stylesheet" href="fa/css/brands.css" />
@@ -29,7 +26,7 @@
       </div>
       <div class="links">
         <ul>
-          <li><a href="home.html">Home</a></li>
+          <li><a href="inbox.html">Home</a></li>
           <li><a href="#">About</a></li>
         </ul>
       </div>
@@ -47,12 +44,12 @@
       <!--img src="RemixIcon-2.5.0/icons/System/arrow-go-back-line.svg" alt=""-->
       <!-- </a> -->
       <ul class="edit-memo">
-        <li>
+        <!-- <li>
           <a href="compose.html" class="arrow">
             <img src="RemixIcon-2.5.0/icons/System/arrow-go-back-line.svg" alt="back">
           </a>
-        </li>
-        <li><a href="">Edit</a></li>
+        </li> -->
+        <li><a onclick="history.back()" href="#">Back</a></li>
         <li><a id="btnPrint" href="">Print</a></li>
         <li><a id="btnSend" href="">Send</a></li>
       </ul>
@@ -61,7 +58,7 @@
 
         <div class="letter-head">
           <img src="img/logo1.png" alt="Logo is here">
-          <h1>SUPPORT SERVICE DIVISION</h1>
+          <h1 id="divisions"></h1>
           <h2>(INFORMATION TECHNOLOGY DEPARTMENT) </h2>
           <h3>MEMORANDUM</h3>
         </div>
@@ -97,8 +94,8 @@
         <p id="minute"></p>
         <div class="memo-footer">
           <!-- <hr> -->
-          <img class="signature" src="img/logo1.png" alt="Signature" width="20px">
-          <p>Signature</p>
+          <img class="signature" src="img/sign.svg" alt="Signature" width="20px">
+          <p id="signedName">Signature</p>
         </div>
 
       </div>
@@ -107,16 +104,19 @@
     <script>
       // Get the composed memo from he local storage
       const composedMemo = JSON.parse(localStorage.getItem('composedMemo'));
+      const authUser = JSON.parse(localStorage.getItem('authUser'));
 
       // Set the text contents of the fields
+      document.getElementById("divisions").innerHTML = composedMemo.divisions.toUpperCase();
       document.getElementById("to").textContent = composedMemo.to;
       document.getElementById("from").textContent = composedMemo.from;
       document.getElementById("through").textContent = composedMemo.cc;
-      document.getElementById("cc").textContent = composedMemo.date;
+      document.getElementById("cc").textContent = composedMemo.cc;
       document.getElementById("date").textContent = composedMemo.date;
       document.getElementById("subject").textContent = composedMemo.subject;
       document.getElementById("body").textContent = composedMemo.body;
       document.getElementById("minute").textContent = composedMemo.minute;
+      document.getElementById("signedName").textContent = authUser.firstname + ' ' +authUser.lastname;
 
       const btnPrint = document.getElementById("btnPrint");
       const makepdf = document.getElementById("memo-content");
@@ -167,7 +167,8 @@
 
           // TODO: Remove the composedMemo from the local storage if the data is saved successfully
           // TODO: Prompt the user that the message is sent
-          console.log("Document written with ID: ", docRef.id);
+          // Navigate to the memo preview page
+          window.location = '/sent.html';
         } catch (e) {
           // TODO: Prompt the user that the message is not sent
           console.error("Error adding document: ", e);
