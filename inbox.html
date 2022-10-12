@@ -28,7 +28,7 @@
       </div>
       <div class="links">
         <ul>
-          <li><a href="inbox.html">Home</a></li>
+          <li><a href="home.html">Home</a></li>
           <li><a href="#">About</a></li>
         </ul>
       </div>
@@ -67,28 +67,9 @@
 
         <!-- Email List rows starts -->
         <div id="emailList__list" class="emailList__list">
-          <!-- Email Row Starts -->
-          <!-- <a href="">
-            <div class="emailRow">
-              <div class="emailRow__options">
-                <input type="checkbox" name="" id="" />
-                <i class="fas fa-star"></i>
-              </div>
-              <h3 class="emailRow__title">YouTube</h3>
-              <div class="emailRow__message">
-                <h4>
-                  You Got a New Subscriber
-                  <span class="emailRow__description"> - on Your Channel Future Coders </span>
-                </h4>
-              </div>
-  
-              <p class="emailRow__time">10pm</p>
-            </div>
-          </a> -->
-          <!-- Email Row Ends -->
 
           <p style="text-align: center; margin-top: 50px; color: grey; font-size: x-large;">Loading...</p>
-
+        </div>
       </section>
 
     </main>
@@ -108,17 +89,18 @@
 
     // Get the email list element
     const memoList = document.getElementById('emailList__list');
-  
+
     const q = query(collection(db, "memo"), where("to", "==", authUser.department));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let memosHTMLString = '';
-      if(!querySnapshot.docs.length){
+      if (!querySnapshot.docs.length) {
         memoList.innerHTML = `<p style="text-align: center; margin-top: 50px; color: grey">Have have no Memos</p>`;
         return false;
       }
       querySnapshot.forEach((doc) => {
-        // const map = `${JSON.stringify(doc.data())}`;
-        localStorage
+       // Save the memo localy
+       localStorage.setItem(doc.id, JSON.stringify(doc.data()));
+
         memosHTMLString += `
         <div data-id=${doc.id} id="${doc.id}" class="emailRow">
             <div class="emailRow__options">
@@ -145,7 +127,7 @@
           e.preventDefault();
           // console.log(row.dataset.id);
           // Navigate to the memo preview page
-          window.location = '/memo.html?id='+row.dataset.id;
+          window.location = '/memo.html?id=' + row.dataset.id;
           return true;
         });
       })

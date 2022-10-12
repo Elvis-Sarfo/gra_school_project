@@ -89,7 +89,7 @@
                     getDocs(q).then((querySnapshot) => {
                         console.log(querySnapshot);
                         localStorage.setItem('authUser', JSON.stringify(querySnapshot.docs[0].data()));
-                        window.location = '/inbox.html'
+                        window.location = '/home.html'
                     }).catch((error) => {
                         console.log(error);
                     });

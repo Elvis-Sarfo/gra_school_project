@@ -29,7 +29,7 @@
       </div>
       <div class="links">
         <ul>
-          <li><a href="inbox.html">Home</a></li>
+          <li><a href="home.html">Home</a></li>
           <li><a href="#">About</a></li>
         </ul>
       </div>
@@ -100,6 +100,11 @@
 
     <script>
 
+
+      const btnPrint = document.getElementById("btnPrint");
+      const makepdf = document.getElementById("memo-content");
+
+
       btnPrint.addEventListener("click", function (e) {
         e.preventDefault();
         html2pdf().from(makepdf).save();
@@ -115,22 +120,33 @@
       const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
       });
-      const q = query(doc(db, "memo", params.id));
-      getDoc(q).then((querySnapshot) => {
-        // Set the text contents of the fields
-        document.getElementById("to").textContent = querySnapshot.data().to;
-        document.getElementById("from").textContent = querySnapshot.data().from;
-        document.getElementById("through").textContent = querySnapshot.data().through;
-        document.getElementById("cc").textContent = querySnapshot.data().cc;
-        document.getElementById("date").textContent = querySnapshot.data().date;
-        document.getElementById("subject").textContent = querySnapshot.data().subject;
-        document.getElementById("body").textContent = querySnapshot.data().body;
-        document.getElementById("minute").textContent = querySnapshot.data().minute;
-        document.getElementById("divisions").innerHTML = querySnapshot.data().divisions.toUpperCase();
-      // document.getElementById("signedName").textContent = authUser.firstname + ' ' +authUser.lastname;
-      }).catch((error) => {
-        console.log(error);
-      });
+      // const q = query(doc(db, "memo", params.id));
+      // getDoc(q).then((querySnapshot) => {
+      //   // Set the text contents of the fields
+      //   document.getElementById("to").textContent = querySnapshot.data().to;
+      //   document.getElementById("from").textContent = querySnapshot.data().from;
+      //   document.getElementById("through").textContent = querySnapshot.data().through;
+      //   document.getElementById("cc").textContent = querySnapshot.data().cc;
+      //   document.getElementById("date").textContent = querySnapshot.data().date;
+      //   document.getElementById("subject").textContent = querySnapshot.data().subject;
+      //   document.getElementById("body").textContent = querySnapshot.data().body;
+      //   document.getElementById("minute").textContent = querySnapshot.data().minute;
+      //   document.getElementById("divisions").innerHTML = querySnapshot.data().divisions.toUpperCase();
+      //   // document.getElementById("signedName").textContent = authUser.firstname + ' ' +authUser.lastname;
+      // }).catch((error) => {
+      //   console.log(error);
+      // });
+      const meno = JSON.parse(localStorage.getItem(params.id));
+
+      document.getElementById("to").textContent = meno.to;
+        document.getElementById("from").textContent = meno.from;
+        document.getElementById("through").textContent = meno.through;
+        document.getElementById("cc").textContent = meno.cc;
+        document.getElementById("date").textContent = meno.date;
+        document.getElementById("subject").textContent = meno.subject;
+        document.getElementById("body").textContent = meno.body;
+        document.getElementById("minute").textContent = meno.minute;
+        document.getElementById("divisions").innerHTML = meno.divisions.toUpperCase();
 
     </script>
 
