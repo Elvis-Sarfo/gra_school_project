@@ -103,10 +103,14 @@
               <label for="cc">CC:</label>
               <input list="users-list" id="cc" name="cc" type="text" id="path" placeholder="">
             </span>
+            <label for="ref">REF:</label>
+            <input list="user-list" id="ref" name="ref" type="ref" id="path" placeholder="" />
+            </span>
             <span>
               <label for="date">DATE:</label>
-              <input id="date" name="date" type="date" id="path" placeholder="dd/mm/yyyy" />
+              <input id="date" name="date" type="date" id="path" placeholder="Month dd, yyyy" />
             </span>
+            <span>
             <div class="input-text">
               <span class="m-0">
                 <label for="subject">SUBJECT</label>
@@ -121,7 +125,7 @@
                 <textarea name="minute" id="minute" cols="100" rows="4" placeholder="Minute/Comments"></textarea>
               </span>
               <span class="m-0 container">
-                <label for="minute">Attachment</label>
+                <label for="minute">ATTACH</label>
                 <input name="file1" type="file" class="dropify" data-height="100" multiple />
               </span>
             </div>
@@ -178,13 +182,14 @@
             const from = document.getElementById("from").value;
             const through = document.getElementById("through").value;
             const cc = document.getElementById("cc").value;
+            const ref = document.getElementById("ref").value;
             const date = document.getElementById("date").value;
             const subject = document.getElementById("subject").value;
             const body = document.getElementById("body").value;
             const minute = document.getElementById("minute").value;
 
             // Create an object to hold the data
-            const newMemo = { divisions, to, from, through, cc, date, subject, body, minute };
+            const newMemo = { divisions, to, from, through, cc, ref, date, subject, body, minute };
 
             // Stringify the object and save the memo data in a local storage
             localStorage.setItem('composedMemo', JSON.stringify(newMemo));

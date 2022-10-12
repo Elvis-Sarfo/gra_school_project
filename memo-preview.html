@@ -59,7 +59,7 @@
         <div class="letter-head">
           <img src="img/logo2.png" alt="Logo is here">
           <h1 id="divisions"></h1>
-          <h2>(DEPARTMENT) </h2>
+          <h2>DEPARTMENT </h2>
           <h3>MEMORANDUM</h3>
         </div>
         <table class="memo-meta">
@@ -78,6 +78,10 @@
           <tr>
             <th>CC:</th>
             <td id="cc"></td>
+          </tr>
+          <tr>
+            <th>REF:</th>
+            <td id="ref"></td>
           </tr>
           <tr>
             <th>DATE:</th>
@@ -112,6 +116,7 @@
       document.getElementById("from").textContent = composedMemo.from;
       document.getElementById("through").textContent = composedMemo.through;
       document.getElementById("cc").textContent = composedMemo.cc;
+      document.getElementById("ref").textContent = composedMemo.ref;
       document.getElementById("date").textContent = composedMemo.date;
       document.getElementById("subject").textContent = composedMemo.subject;
       document.getElementById("body").textContent = composedMemo.body;
