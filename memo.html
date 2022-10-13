@@ -56,7 +56,7 @@
         <div class="letter-head">
           <img src="img/logo2.png" alt="Logo is here">
           <h1>SUPPORT SERVICE DIVISION</h1>
-          <h2>(INFORMATION TECHNOLOGY DEPARTMENT) </h2>
+          <h2>DEPARTMENT</h2>
           <h3>MEMORANDUM</h3>
         </div>
         <table class="memo-meta">
@@ -75,6 +75,10 @@
           <tr>
             <th>CC:</th>
             <td id="cc"></td>
+          </tr>
+          <tr>
+            <th>REF:</th>
+            <td id="ref"></td>
           </tr>
           <tr>
             <th>DATE:</th>
@@ -127,6 +131,7 @@
       //   document.getElementById("from").textContent = querySnapshot.data().from;
       //   document.getElementById("through").textContent = querySnapshot.data().through;
       //   document.getElementById("cc").textContent = querySnapshot.data().cc;
+      //   document.getElementById("ref").textContent = querySnapshot.data().ref;
       //   document.getElementById("date").textContent = querySnapshot.data().date;
       //   document.getElementById("subject").textContent = querySnapshot.data().subject;
       //   document.getElementById("body").textContent = querySnapshot.data().body;
@@ -142,6 +147,7 @@
         document.getElementById("from").textContent = meno.from;
         document.getElementById("through").textContent = meno.through;
         document.getElementById("cc").textContent = meno.cc;
+        document.getElementById("ref").textContent = meno.ref;
         document.getElementById("date").textContent = meno.date;
         document.getElementById("subject").textContent = meno.subject;
         document.getElementById("body").textContent = meno.body;
