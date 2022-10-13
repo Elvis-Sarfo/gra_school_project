@@ -11,6 +11,8 @@
   <!-- <link rel="stylesheet" href="css/home.css"> -->
   <link rel="stylesheet" href="css/inbox.css">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+
   <!--Icons-->
   <link rel="stylesheet" href="fa/css/brands.css" />
   <link rel="stylesheet" href="fa/css/solid.css" />
@@ -116,7 +118,7 @@
                 <span class="emailRow__description"> - ${doc.data().body} </span>
               </h4>
             </div>
-            <p class="emailRow__time">${doc.data().date}</p>
+            <p class="emailRow__time">${ moment(doc.data().date).format('LL')}</p>
           </div>
         `
       });

@@ -118,46 +118,31 @@
               <label for="cc">CC:</label>
               <input list="users-list" id="cc" name="cc" type="text" id="path" placeholder="">
             </span>
-            <label for="ref">REF:</label>
-            <input list="user-list" id="ref" name="ref" type="ref" id="path" placeholder="" />
-            </span>
             <span>
               <label for="date">DATE:</label>
               <input id="date" name="date" type="date" id="path" placeholder="Month dd, yyyy" />
+
+              <label for="date">REF:</label>
+              <input list="users-list" id="ref" name="cc" type="text" id="path" placeholder="">
+
             </span>
-            <span>
+
             <div class="input-text">
               <span class="m-0">
                 <label for="subject">SUBJECT</label>
                 <textarea name="subject" id="subject" cols="100" rows="2" placeholder="Subject"></textarea>
               </span>
-              <span class="m-0">
-                <label for="body">BODY</label>
-                <textarea name="body" id="body" cols="100" rows="10" placeholder="Body"></textarea>
-
-
-
-
-                <div id="editor">
-                  <p>Hello World!</p>
-                  <p>Some initial <strong>bold</strong> text</p>
-                  <p><br></p>
-                </div>
-
-
-
-
-              </span>
-              <span class="m-0">
-                <label for="minute">MINUTES</label>
-                <textarea name="minute" id="minute" cols="100" rows="4" placeholder="Minute/Comments"></textarea>
-              </span>
-              <span class="m-0 container">
-                <label for="minute">ATTACH</label>
-                <input name="file1" type="file" class="dropify" data-height="100" multiple />
-              </span>
             </div>
           </div>
+          <div style="width: 85%; margin:auto; margin-top: 10px;">
+            <div id="editor">
+            </div>
+            <textarea style="margin-top: 10px;" name="minute" id="minute" cols="98" rows="4"
+              placeholder="Minute/Comments"></textarea>
+
+            <input style="margin-top: 15px;" name="file1" type="file" class="dropify" data-height="100" multiple />
+          </div>
+
           <div class="submit-container">
             <button class="button" id="btnSubmit" type="submit">Generate</button>
           </div>
@@ -173,16 +158,53 @@
 
         <!-- Initialize Quill editor -->
         <script>
+          var toolbarOptions = [
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            ['blockquote', 'code-block'],
+
+            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+            [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+            [{ 'direction': 'rtl' }],                         // text direction
+
+            [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+            [{ 'font': [] }],
+            [{ 'align': [] }],
+
+            ['clean']                                         // remove formatting button
+          ];
           var quill = new Quill('#editor', {
-            theme: 'snow'
+            theme: 'snow',
+            toolbar: toolbarOptions,
+            placeholder: "Enter the body here..."
           });
+
+          console.log(quill);
         </script>
+
+
+
+
         <script>
-          $('.dropify').dropify();
+          $('.dropify').dropify({
+            messages: {
+              'default': 'Drag and drop Attachment files here',
+              'replace': 'Drag and drop or click to replace',
+              'remove': 'Remove',
+              'error': 'Ooops, something wrong happended.'
+            }
+          });
           // Get the composed memo from he local storage
           const authUser = JSON.parse(localStorage.getItem('authUser'));
           document.getElementById("from").value = authUser.department;
         </script>
+
+
+
         <script type="module">
           // Import the functions you need from the SDKs you need
           // Import the functions you need from the SDKs you need
@@ -220,14 +242,15 @@
             const from = document.getElementById("from").value;
             const through = document.getElementById("through").value;
             const cc = document.getElementById("cc").value;
-            const ref = document.getElementById("ref").value;
             const date = document.getElementById("date").value;
             const subject = document.getElementById("subject").value;
-            const body = document.getElementById("body").value;
+            const body = quill.root.innerText;
+            const bodyDelta = JSON.stringify(quill.getContents());
             const minute = document.getElementById("minute").value;
+            const ref = document.getElementById("ref").value;
 
             // Create an object to hold the data
-            const newMemo = { divisions, to, from, through, cc, ref, date, subject, body, minute };
+            const newMemo = { divisions, to, from, through, cc, ref, date, subject, body, bodyDelta, minute };
 
             // Stringify the object and save the memo data in a local storage
             localStorage.setItem('composedMemo', JSON.stringify(newMemo));

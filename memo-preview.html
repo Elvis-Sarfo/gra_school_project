@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/memo.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+
   <!--Icons-->
   <link rel="stylesheet" href="fa/css/brands.css" />
   <link rel="stylesheet" href="fa/css/solid.css" />
@@ -94,7 +97,7 @@
         </table>
 
         <hr>
-        <p id="body"></p>
+        <div style="margin-top: 10px;"  id="body"></div>
         <p id="minute"></p>
         <div class="memo-footer">
           <!-- <hr> -->
@@ -105,7 +108,14 @@
       </div>
     </section>
 
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
     <script>
+      function quillGetHTML(inputDelta) {
+        var tempCont = document.createElement("div");
+        (new Quill(tempCont)).setContents(inputDelta);
+        return tempCont.getElementsByClassName("ql-editor")[0].innerHTML;
+      }
       // Get the composed memo from he local storage
       const composedMemo = JSON.parse(localStorage.getItem('composedMemo'));
       const authUser = JSON.parse(localStorage.getItem('authUser'));
@@ -117,11 +127,11 @@
       document.getElementById("through").textContent = composedMemo.through;
       document.getElementById("cc").textContent = composedMemo.cc;
       document.getElementById("ref").textContent = composedMemo.ref;
-      document.getElementById("date").textContent = composedMemo.date;
+      document.getElementById("date").textContent = moment(composedMemo.date).format('LL');
       document.getElementById("subject").textContent = composedMemo.subject;
-      document.getElementById("body").textContent = composedMemo.body;
+      document.getElementById("body").innerHTML = quillGetHTML(JSON.parse(composedMemo.bodyDelta));
       document.getElementById("minute").textContent = composedMemo.minute;
-      document.getElementById("signedName").textContent = authUser.firstname + ' ' +authUser.lastname;
+      document.getElementById("signedName").textContent = authUser.firstname + ' ' + authUser.lastname;
 
       const btnPrint = document.getElementById("btnPrint");
       const makepdf = document.getElementById("memo-content");

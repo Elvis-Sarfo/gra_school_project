@@ -6,7 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/inbox.css">
-  <title>Document</title>
+  <title>Sent</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+
 
   <!--Icons-->
   <link rel="stylesheet" href="fa/css/brands.css" />
@@ -97,7 +100,7 @@
         localStorage.setItem(doc.id, JSON.stringify(doc.data()));
 
         memosHTMLString += `
-          <div id="${doc.id}" class="emailRow">
+          <div data-id=${doc.id} id="${doc.id}"" class="emailRow">
               <div class="emailRow__options">
                 <input type="checkbox" name="" id="" />
                 <i class="fas fa-star"></i>
@@ -109,7 +112,7 @@
                   <span class="emailRow__description"> - ${doc.data().body} </span>
                 </h4>
               </div>
-              <p class="emailRow__time">${doc.data().date}</p>
+              <p class="emailRow__time">${ moment(doc.data().date).format('LL')}</p>
             </div>
           `
       });
@@ -117,6 +120,7 @@
       const emailRow = document.querySelectorAll('.emailRow');
       emailRow.forEach((row) => {
         row.addEventListener("click", async function (e) {
+          window.location = '/memo.html?id=' + row.dataset.id;
           e.preventDefault();
           return true;
         });
