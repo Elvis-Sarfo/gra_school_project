@@ -12,13 +12,7 @@
   // Your web app's Firebase configuration
   // For Firese JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
-    apiKey: "AIzaSyAPw3zIsWwYmVCH6OpNPeJg_e9fnmk9kW4",
-    authDomain: "gra-school.firebaseapp.com",
-    projectId: "gra-school",
-    storageBucket: "gra-school.appspot.com",
-    messagingSenderId: "693272566435",
-    appId: "1:693272566435:web:6472e527473a570effbd16",
-    measurementId: "G-TQ8Y4PYQSX"
+    // Your web app's Firebase configuration
   };
 
   // Initialize Firebase
